@@ -1,6 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, $http) {
+  $scope.getToken = function(settings) {
+    console.log(settings.key);
+    var otpObject = new OTPF();
+    var otp = otpObject.valueOTP(settings.key);
+    $scope.token = otp;
+  }
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called

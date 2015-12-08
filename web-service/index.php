@@ -57,7 +57,7 @@ class mouleAuthentificator {
 	}
 }
 
-if(!isset($_GET["key"]) || strlen($_GET["key"]) > 0)
+if(isset($_GET["key"]) && strlen($_GET["key"]) > 0)
 {
 	$secretKey32 = $_GET["key"];
 

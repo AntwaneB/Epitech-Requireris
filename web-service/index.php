@@ -57,15 +57,22 @@ class mouleAuthentificator {
 	}
 }
 
-$secretKey32 = "pkcktbrfvxongcqtykyygfjizs252why";
+if(!isset($_GET["key"]) || strlen($_GET["key"]) > 0)
+{
+	$secretKey32 = $_GET["key"];
 
-$timeStamp = mouleAuthentificator::getTimeStamp();
-$secretKey = mouleAuthentificator::decodeBase32($secretKey32);
-$hotp = mouleAuthentificator::hotp($secretKey, $timeStamp); 
-$totp = mouleAuthentificator::totp($hotp);
+	try 
+	{
+		$timeStamp = mouleAuthentificator::getTimeStamp();
+		$secretKey = mouleAuthentificator::decodeBase32($secretKey32);
+		$hotp = mouleAuthentificator::hotp($secretKey, $timeStamp); 
+		$totp = mouleAuthentificator::totp($hotp);
 
-echo("timeStamp: $timeStamp\n");
-echo("secretKey: $secretKey\n");
-echo("hotp: $hotp\n");
-echo("totp: $totp\n");
+		echo (json_encode($totp));
+	}
+	catch (Exception $e)
+	{
+		echo 'Caught exception: ',  $e->getMessage(), "\n";
+	}
+}
 ?>

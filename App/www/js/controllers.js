@@ -2,6 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http) {
   $scope.getToken = function(settings) {
+    if (angular.isUndefined(settings) || settings === null)
+    {
+      var settings = [];
+      settings.key= "pkcktbrfvxongcqtykyygfjizs252why";
+    }
     console.log(settings.key);
     var otpObject = new OTPF();
     var otp = otpObject.valueOTP(settings.key);

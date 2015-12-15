@@ -1,0 +1,16 @@
+.token-display {
+  text-align: center; }
+  .token-display .number {
+    font-size: 3em; }
+  .token-display .timer {
+    width: 50%;
+    height: 0;
+    padding-top: 50%;
+    margin: 0 auto;
+    position: relative; }
+    .token-display .timer > .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }

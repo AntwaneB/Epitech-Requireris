@@ -9,17 +9,14 @@
 
 <h2 class="page-header">TOTP généré</h2>
 
-<div class="row">
-    <div class="token-display col-md-6 col-md-offset-3">
-        <div id="controller" ng-app="get" ng-controller="getTotp" ng-init="init({{ $token->id }})">
+<div class="row text-center">
+    <div class="token-display" id="controller" ng-app="get" ng-controller="getTotp" ng-init="init({{ $token->id }})">
         <div class="number" ng-repeat="(key, data) in totp">
              @{{data}}
         </div>
         <div class="timer">
-            <div class="content">
-                 <p id="demo" style="height:180px;"></p>
-            </div>
+             <div id="demo"></div>
         </div>
-        </div>
+        <div class="clearfix"></div>
     </div>
 </div>

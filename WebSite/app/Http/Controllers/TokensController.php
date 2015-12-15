@@ -15,7 +15,7 @@ class TokensController extends Controller
 {
     public function __construct()
     {
-        view()->share(['js' => ['angular.min', 'jquery.pietimer','timer', 'App', 'controllers/getTotp'],'css' => ['tokens']]);
+        view()->share(['js' => ['jquery.pietimer','timer', 'App', 'controllers/getTotp'],'css' => ['tokens']]);
     }
 
     /**

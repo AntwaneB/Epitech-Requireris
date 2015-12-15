@@ -11,13 +11,17 @@
 
 <div class="row">
     <div class="token-display col-md-6 col-md-offset-3">
-        <div class="number">
+        <div id="controller" ng-app="get" ng-controller="getTotp" ng-init="init({{ $token->id }})">
+        <div class="number" ng-repeat="(key, data) in totp">
             <!-- TOTP here -->
+             @{{data}}
         </div>
         <div class="timer">
             <div class="content">
                 <!-- Timer here -->
+                 <p id="demo" style="height:180px;"></p>
             </div>
+        </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,22 @@
+<ion-view view-title="Moule Authenticator">
+  <ion-content class="padding">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <span class="input-label" >Token</span>
+        <input type="text" id="key" name="key" ng-model="settings.key"/>
+      </label>
+      <div class="padding">
+        <button id="timer" onclick="$('#timer').timer()" class="button button-block button-positive" ng-click="getToken(settings)">Submit</button>
+      </div>
+      <div style="text-align:center;margin-top:150px;">
+        <p style="font-size:50px;font-weight: bold;color:rgba(255, 255, 255, 1);">{{ token }}</p>
+        <p id="demo" style="margin-top:-105px;height:180px;
+        -webkit-filter: blur(3px);
+        -moz-filter: blur(3px);
+        -o-filter: blur(3px);
+        -ms-filter: blur(3px);
+        filter: blur(3px);"></p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

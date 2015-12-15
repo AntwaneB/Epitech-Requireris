@@ -19,7 +19,7 @@
         <div class="timer">
             <div class="content">
                 <!-- Timer here -->
-                 <p id="demo" style="height:180px;"></p>
+                 <p id="demo"></p>
             </div>
         </div>
         </div>

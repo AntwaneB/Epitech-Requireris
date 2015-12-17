@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
 body        {
-    background: url(/img/julyy.jpg);
+    background: url('../img/julyy.jpg');
     background-attachment:fixed;
     background-position: center;
 }

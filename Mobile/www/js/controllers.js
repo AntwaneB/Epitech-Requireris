@@ -8,9 +8,9 @@ angular.module('starter.controllers', [])
       settings.key= "pkcktbrfvxongcqtykyygfjizs252why";
     }
     console.log(settings.key);
-    var otpObject = new OTPF();
-    var otp = otpObject.valueOTP(settings.key);
-    $scope.token = otp;
+    var totpObject = new TOTP();
+    var totp = totpObject.valueTOTP(settings.key);
+    $scope.token = totp;
   }
 })
 

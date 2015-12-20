@@ -51,11 +51,13 @@ class TokensController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'token' => 'required'
+            'service' => 'required',
+            'token' => 'required',
         ]);
 
         $token = new Token();
         $token->user_id = Auth::id();
+        $token->service = $request->get('service');
         $token->token = $request->get('token');
         $token->save();
 

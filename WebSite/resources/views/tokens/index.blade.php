@@ -9,6 +9,8 @@
     @foreach ($tokens as $token)
     <div class="panel panel-default">
         <div class="panel-heading">
+            <strong>Service :</strong> {{ $token->service }}
+            -
             <strong>Token :</strong> {{ $token->token }}
             <span class="pull-right">
                 <strong>Ajouté le :</strong> {{ $token->created_at }}
@@ -28,14 +30,19 @@
 {!! Form::open(['route' => 'tokens.store']) !!}
 
 <div class="form-group">
-    <div class="input-group">
-        {!! Form::text('token', NULL, ['class' => 'form-control', 'placeholder' => 'Token Google']) !!}
-        <span class="input-group-btn">
-            {!! Form::submit('Ajouter', ['class' => 'btn btn-primary']) !!}
-        </span>
+    <div class="row">
+        <div class="col-md-5">
+            {!! Form::text('service', NULL, ['class' => 'form-control', 'placeholder' => 'Service']) !!}
+        </div>
+        <div class="col-md-5">
+            {!! Form::text('token', NULL, ['class' => 'form-control', 'placeholder' => 'Token']) !!}
+        </div>
+        <div class="col-md-2">
+            {!! Form::submit('Ajouter', ['class' => 'btn btn-primary', 'style' => 'width: 100%;']) !!}
+        </div>
     </div>
     <p class="help-block">
-        <em>Votre token Google sera chiffré de façon à ce que vous soyez le seul à le voir, même dans le cas où quelqu'un aurait accès à la base de donnée.</em>
+        <em>Votre token sera chiffré de façon à ce que vous soyez le seul à le voir, même dans le cas où quelqu'un aurait accès à la base de donnée.</em>
     </p>
 </div>
 

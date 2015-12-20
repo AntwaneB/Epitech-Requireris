@@ -1,6 +1,8 @@
 <h2 class="page-header">Informations du token</h2>
 
 <dl class="dl-horizontal">
+    <dt>Service</dt>
+    <dd>{{ $token->service }}</dd>
     <dt>Token</dt>
     <dd>{{ $token->token }}</dd>
     <dt>Ajouté le</dt>

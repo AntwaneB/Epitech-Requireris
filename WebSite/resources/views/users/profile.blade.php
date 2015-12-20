@@ -13,6 +13,8 @@
 @foreach ($tokens as $token)
 <div class="panel panel-default">
     <div class="panel-heading">
+        <strong>Service :</strong> {{ $token->service }}
+        -
         <strong>Token :</strong> {{ $token->token }}
         <span class="pull-right">
             <strong>Ajouté le :</strong> {{ $token->created_at }}

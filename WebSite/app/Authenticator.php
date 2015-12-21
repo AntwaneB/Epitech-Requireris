@@ -31,7 +31,7 @@ class Authenticator
         return ($string);
     }
 
-    private static function hotp($key, $time)
+    private static function generateHmac($key, $time)
     {
         if (strlen($key) < 8)
             throw new \Exception('Error: secret key is too short. Must be at least 16 base 32 characters');
@@ -42,29 +42,29 @@ class Authenticator
         return ($hash);
     }
 
-    private static function toDec($hotp)
+    private static function dynamicTruncation($hash)
     {
-        $offset = ord($hotp[19]) & 0xf;
+        $offset = ord($hash[19]) & 0xf;
 
         return ((
-            ((ord($hotp[$offset+0]) & 0x7f) << 24 ) |
-            ((ord($hotp[$offset+1]) & 0xff) << 16 ) |
-            ((ord($hotp[$offset+2]) & 0xff) << 8 ) |
-            (ord($hotp[$offset+3]) & 0xff)
+            ((ord($hash[$offset+0]) & 0x7f) << 24 ) |
+            ((ord($hash[$offset+1]) & 0xff) << 16 ) |
+            ((ord($hash[$offset+2]) & 0xff) << 8 ) |
+            (ord($hash[$offset+3]) & 0xff)
         ) % pow(10, 6));
     }
 
-    private static function totp($hotp)
+    private static function totp($hash)
     {
-        return (str_pad(Authenticator::toDec($hotp), 6, '0', STR_PAD_LEFT));
+        return (str_pad(Authenticator::dynamicTruncation($hash), 6, '0', STR_PAD_LEFT));
     }
 
     public static function getCode($key)
     {
         $timestamp = Authenticator::getTimeStamp();
         $secretKey = Authenticator::decodeBase32($key);
-        $hotp = Authenticator::hotp($secretKey, $timestamp);
-        $totp = Authenticator::totp($hotp);
+        $hash = Authenticator::generateHmac($secretKey, $timestamp);
+        $totp = Authenticator::totp($hash);
 
         return ($totp);
     }
